@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Picture</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="hero">
+      <div class="hero-text">
+        <h1 class="title">Picture Element is So Awesome</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, architecto.</p>
+      </div>
+
+      <!-- Picture element wrap source and img tags
+          each source referring to different image,
+          in source element srcset attribute reffering to image sources 
+          with same image content but with different size and format,
+          media attribute define css media query to show which image should show,
+          sizes attribute define css media query or just value to tell size of screen  -->
+      <!-- srcset with [file-url]{space}[file-size]w tell 
+           that [file-url] have original size [file-size]
+           w as width can be think of px unit -->
+      <!-- Start of .example implementation#1 -->
+      <picture class="example">
+        <source
+          media="((min-width: 600px) and (max-width: 1280px))"
+          srcset="
+            img/pexels-orange-cat-blur.webp     480w,
+            img/pexels-orange-cat-blur.jpg      480w,
+            img/pexels-orange-cat-blur@2x.webp  960w,
+            img/pexels-orange-cat-blur@2x.jpg   960w,
+            img/pexels-orange-cat-blur@3x.webp 1920w,
+            img/pexels-orange-cat-blur@3x.jpg  1920w
+          "
+          sizes="50vw"
+        />
+        <source
+          srcset="
+            img/pexels-orange-cat-focus.webp     480w,
+            img/pexels-orange-cat-focus.jpg      480w,
+            img/pexels-orange-cat-focus@2x.webp  960w,
+            img/pexels-orange-cat-focus@2x.jpg   960w,
+            img/pexels-orange-cat-focus@3x.webp 1920w,
+            img/pexels-orange-cat-focus@3x.jpg  1920w
+          "
+        />
+        <img class="example" src="img/pexels-orange-cat-blur.jpg" alt="Two cats on rusty stair" width="480" />
+      </picture>
+
+      <!-- srcset with [file-url]{space}[2x or 3x] 
+           tell that [file-url] have corresponded its dpr (density per ratio),
+           browser will choose src in srcset by its dpr as src of img -->
+      <!-- Start of .example implementation#2 -->
+      <!-- <img
+        class="example"
+        src="img/pexels-orange-cat-blur.jpg"
+        srcset="
+          img/pexels-orange-cat-blur.webp,
+          img/pexels-orange-cat-blur@2x.webp 2x,
+          img/pexels-orange-cat-blur@3x.webp 3x
+        "
+        alt="Two cats on rusty stair"
+        width="480"
+      /> -->
+      <!-- End of .example -->
+
+      <!-- srcset with [file-url]{space}[file-size]w tell 
+          that [file-url] have original size [file-size]
+          w as width can be think of px unit,
+          sizes attribute define css media query to tell size of screen -->
+      <!-- Start of .example implementation#3 -->
+      <!-- <img
+        class="example"
+        src="img/pexels-orange-cat-blur.jpg"
+        srcset="
+          img/pexels-orange-cat-blur.webp     480w,
+          img/pexels-orange-cat-blur@2x.webp  960w,
+          img/pexels-orange-cat-blur@3x.webp 1920w
+        "
+        sizes="(min-width: 960px) 50vw, 100vw"
+        alt="Two cats on rusty stair"
+        width="480"
+      /> -->
+      <!-- End of .example -->
+    </div>
+  </body>
+</html>
